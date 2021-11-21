@@ -1,0 +1,51 @@
+﻿@model ExperienceITBootcamp.Models.Courses
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("create", "Courses"))
+{
+
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.CourseName)
+        @Html.TextBoxFor(m => m.CourseName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CourseName, "", new { @class = "text-danger" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.CourseDescription)
+        @Html.TextBoxFor(m => m.CourseDescription, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CourseDescription, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.TutorName)
+        @Html.TextBoxFor(m => m.TutorName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.TutorName, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+       
+        @Html.LabelFor(m => m.CourseRating)
+        @Html.TextBoxFor(m => m.CourseRating, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CourseRating, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "List")
+    </div>
+
+
+
+
+}

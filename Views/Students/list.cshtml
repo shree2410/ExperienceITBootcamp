@@ -1,0 +1,51 @@
+﻿@*added specified type to list student & model binding in (students)List view.cshtml*@
+
+@using System.Web.UI.WebControls
+@using ExperienceITBootcamp.Models
+@model IEnumerable<ExperienceITBootcamp.Models.Students>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Students</h2>
+<p>
+    @*provide link to create new students*@
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*creating table for student .cs fields*@
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+        <th>@Html.DisplayNameFor(model => model.LastName)</th>
+        <th>@Html.DisplayNameFor(model => model.CourseId)</th>
+        <th>@Html.DisplayNameFor(model => model.CourseEnrolledDate)</th>
+        <th>@Html.DisplayNameFor(model => model.DateOfBirth)</th>
+        <th>@Html.DisplayNameFor(model => model.CourseStatus)</th>
+        <th>@Html.DisplayNameFor(model => model.Grade)</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+        @foreach (var student in Model) //iterating list of student obj
+        {
+<tr>
+    <td>@Html.DisplayFor(modelStudent => student.Id)</td>
+    <td>@Html.DisplayFor(modelStudent => student.FirstName)</td>
+    <td>@Html.DisplayFor(modelStudent => student.LastName)</td>
+    <td>@Html.DisplayFor(modelStudent => student.CourseId)</td>
+    <td>@Html.DisplayFor(modelStudent => student.CourseEnrolledDate)</td>
+    <td>@Html.DisplayFor(modelStudent => student.DateOfBirth)</td>
+    <td>@Html.DisplayFor(modelStudent => student.CourseStatus)</td>
+    <td>@Html.DisplayFor(modelStudent => student.Grade)</td>
+    <td>@Html.ActionLink("Edit", "Edit", new { id = student.Id })</td>
+    <td>@Html.ActionLink("Delete", "Delete", new { id = student.Id })</td>
+</tr>
+        }
+</Table>
+        
+
+
+
+

@@ -1,0 +1,42 @@
+﻿@*added specified type ienumerable to list Courses & model binding in (Courses)List view.cshtml*@
+
+@using ExperienceITBootcamp.Models
+@model IEnumerable<ExperienceITBootcamp.Models.Courses>
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>List of Courses</h2>
+<p>
+    @*provide link to create new Courses*@
+    @Html.ActionLink("Create New", "Create")
+</p>
+@*creating table for student .cs fields*@
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.CourseName)</th>
+        <th>@Html.DisplayNameFor(model => model.CourseDescription)</th>
+        <th>@Html.DisplayNameFor(model => model.TutorName)</th>
+    <th>@Html.DisplayNameFor(model => model.CourseRating)</th>
+    <th>Edit</th>
+    <th>Delete</th>
+        
+        @foreach (var course in Model)//iterating list of Courses obj created in controller that connect db
+        {
+    <tr>
+        <td>@Html.DisplayFor(modelCourse => course.Id)</td>
+        <td>@Html.DisplayFor(modelCourse => course.CourseName)</td>
+        <td>@Html.DisplayFor(modelCourse => course.CourseDescription)</td>
+        <td>@Html.DisplayFor(modelCourse => course.TutorName)</td>
+        <td>@Html.DisplayFor(modelCourse => course.CourseRating)</td>
+        <td>@Html.ActionLink("Edit", "Edit", new { id = course.Id })</td>
+        <td>@Html.ActionLink("Delete", "Delete", new { id = course.Id })</td>
+    </tr>
+    }
+    </table>
+
+
+
+

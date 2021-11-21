@@ -1,0 +1,65 @@
+﻿@using ExperienceITBootcamp.Models
+@model ExperienceITBootcamp.Models.StudentFormViewModel
+@{
+        ViewBag.Title = "Create";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+
+        @Html.LabelFor(m => m.students.FirstName)
+        @Html.TextBoxFor(m => m.students.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.students.FirstName, "", new { @class = "text-danger" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.students.LastName)
+        @Html.TextBoxFor(m => m.students.LastName, new { @class = "form-control" })
+    </div>
+    //Provide a drop-down list box for showing all the courses available
+    //for the student in the Student page when trying to create a new student and editing an existing student.
+    <div class="form-group">
+        @Html.LabelFor(m => m.students.CourseId)
+        @Html.DropDownListFor(m => m.students.CourseId, new SelectList(Model.courses, "Id", "CourseName"), "Select Course", new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(m => m.students.CourseId, "", new { @class = "text-danger" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.students.CourseEnrolledDate)
+        @Html.TextBoxFor(m => m.students.CourseEnrolledDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.students.CourseEnrolledDate, "", new { @class = "text-danger" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.students.DateOfBirth)
+        @Html.TextBoxFor(m => m.students.DateOfBirth, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.students.DateOfBirth, "", new { @class = "text-danger" })
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.students.CourseStatus)
+        @Html.EnumDropDownListFor(m=>m.students.CourseStatus,htmlAttributes:new {@class="form-control"})
+        @Html.ValidationMessageFor(m => m.students.CourseStatus, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.students.Grade)
+        @Html.TextBoxFor(m => m.students.Grade, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.students.Grade, "", new { @class = "text-danger" })
+
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "List")
+    </div>
+}

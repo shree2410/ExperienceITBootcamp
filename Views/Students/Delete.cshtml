@@ -1,0 +1,41 @@
+﻿@model ExperienceITBootcamp.Models.Students
+@{
+    ViewBag.Title = "Delete";
+}
+<h2>Delete</h2>
+<p class="error">@ViewBag.ErrorMessage</p>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+
+    <h4>Students</h4>
+    <dt>@Html.DisplayNameFor(model => model.FirstName)</dt>
+    <dd>@Html.DisplayFor(model => model.FirstName)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.LastName)</dt>
+    <dd>@Html.DisplayFor(model => model.LastName)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.CourseId)</dt>
+    <dd>@Html.DisplayFor(model => model.CourseId)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.CourseEnrolledDate)</dt>
+    <dd>@Html.DisplayFor(model => model.CourseEnrolledDate)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.CourseStatus)</dt>
+    <dd>@Html.DisplayFor(model => model.CourseStatus)</dd>
+
+    <dt>@Html.DisplayNameFor(model => model.Grade)</dt>
+    <dd>@Html.DisplayFor(model => model.Grade)</dd>
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "List")
+        </div>
+
+    }
+
+</div>

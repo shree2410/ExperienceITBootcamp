@@ -1,0 +1,66 @@
+﻿@model ExperienceITBootcamp.Models.StudentFormViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Students</h2>
+@using (Html.BeginForm("Edit", "Students"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.HiddenFor(model => model.students.Id, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.students.FirstName)
+        @Html.TextBoxFor(model => model.students.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.students.FirstName, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.students.LastName)
+        @Html.TextBoxFor(model => model.students.LastName, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.students.CourseId)
+        @Html.DropDownListFor(model => model.students.CourseId, new SelectList(Model.courses, "Id", "CourseName"), "Select Course", new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.students.CourseId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.students.CourseEnrolledDate)
+        @Html.TextBoxFor(model => Model.students.CourseEnrolledDate, "{0:MM/d/yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.students.CourseEnrolledDate, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.students.DateOfBirth)
+        @Html.TextBoxFor(model => model.students.DateOfBirth, "{0:MM/d/yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.students.DateOfBirth, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.students.CourseStatus)
+        @Html.EnumDropDownListFor(model=>model.students.CourseStatus,htmlAttributes:new {@class="form-control"})
+        @Html.ValidationMessageFor(model => model.students.CourseStatus, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.students.Grade)
+        @Html.TextBoxFor(model => model.students.Grade, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Update" class="btn btn-default" />
+        </div>
+    </div>
+    <div>
+        @Html.ActionLink("Back to List", "List")
+    </div>
+
+}
+
+
+
+
+
