@@ -17,7 +17,7 @@
 - Code First Migrations.
  Is is an application created to memorize the material from an online course.
 
-## Technologies Used
+## Technologies/Tools Used
 - Microsoft Visual Studio Community 2019-Version 16.11.3
 - NuGet Package Manager in Visual Studio-version 5.11.0
 - Microsoft .NET Framework - version 4.8
